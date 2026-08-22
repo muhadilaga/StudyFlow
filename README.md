@@ -1,20 +1,31 @@
 # StudyFlow
 
-StudyFlow adalah **academic planner sederhana untuk mahasiswa Indonesia**. Project ini dibuat sebagai **MVP SaaS portfolio** dengan fokus pada pengelolaan jadwal kuliah, tugas, deadline, dan goal belajar mingguan dari satu dashboard.
+StudyFlow adalah **academic planner sederhana untuk mahasiswa Indonesia** yang dibuat sebagai **MVP SaaS portfolio**. Aplikasi ini membantu mahasiswa mengelola jadwal kuliah, tugas, deadline, dan goal belajar mingguan dari satu dashboard yang ringan dan mobile-friendly.
 
-## Demo
+## Live demo
 
-- Public test URL: `http://213.163.196.241`
+- **Public test URL:** http://213.163.196.241
+
+## Preview
+
+Fokus utama StudyFlow:
+- autentikasi aman dengan Supabase Auth
+- dashboard ringkas untuk deadline dan progres
+- CRUD mata kuliah, tugas, dan goal
+- kalender deadline
+- navigasi mobile untuk penggunaan dari HP
+
+> Catatan: saat ini project masih berada pada tahap MVP portfolio dan sedang dipoles menuju production-ready deployment.
 
 ## Fitur utama
 
-### Autentikasi
+### 1. Autentikasi
 - Register akun
 - Login
-- Verifikasi email dengan Supabase Auth
 - Logout
+- Verifikasi email dengan Supabase Auth
 
-### Dashboard
+### 2. Dashboard akademik
 - Ringkasan tugas aktif
 - Statistik progres belajar
 - Deadline terdekat
@@ -22,13 +33,13 @@ StudyFlow adalah **academic planner sederhana untuk mahasiswa Indonesia**. Proje
 - Goal aktif mingguan
 - Jadwal kuliah hari ini
 
-### Mata kuliah
+### 3. Manajemen mata kuliah
 - Tambah mata kuliah
 - Lihat daftar mata kuliah
 - Edit mata kuliah
 - Hapus mata kuliah
 
-### Tugas
+### 4. Manajemen tugas
 - Tambah tugas
 - Lihat daftar tugas
 - Edit tugas
@@ -37,14 +48,14 @@ StudyFlow adalah **academic planner sederhana untuk mahasiswa Indonesia**. Proje
 - Filter tugas
 - Kalender deadline
 
-### Goals
+### 5. Goal belajar
 - Tambah goal mingguan
 - Lihat goal aktif
 - Edit goal
 - Hapus goal
 - Pantau progres
 
-### UX tambahan
+### 6. UX & testing
 - Landing page yang sudah dipoles untuk mobile
 - Navigasi mobile bottom bar
 - Dashboard dengan indikator overdue dan due soon
@@ -57,33 +68,34 @@ StudyFlow adalah **academic planner sederhana untuk mahasiswa Indonesia**. Proje
 - **Tailwind CSS v4**
 - **Supabase Auth**
 - **Supabase Postgres**
-- **Playwright** untuk smoke test
+- **Playwright**
 - **Nginx reverse proxy** untuk testing publik di VPS
 
-## Struktur project singkat
+## Struktur project
 
 ```text
 app/                # routing App Router
-components/         # komponen UI dan layout
-lib/                # helper, query, validator, supabase utils
-supabase/           # schema dan RLS policies
+components/         # komponen UI, dashboard, form, layout
+lib/                # helper, query, validator, Supabase utils
+supabase/           # schema SQL dan RLS policies
 tests/              # smoke tests Playwright
 types/              # shared types
+public/             # static assets
 ```
 
-## Menjalankan project secara lokal
+## Local setup
 
 ### 1. Install dependency
 ```bash
 npm install
 ```
 
-### 2. Salin file env
+### 2. Copy env file
 ```bash
 cp .env.example .env.local
 ```
 
-### 3. Isi environment
+### 3. Isi environment variable
 Minimal isi:
 
 ```env
@@ -91,30 +103,30 @@ NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_publishable_key
 ```
 
-> Gunakan **publishable/anon key**, bukan service role key.
+> Gunakan **publishable / anon key**, bukan service role key.
 
 ### 4. Jalankan development server
 ```bash
 npm run dev
 ```
 
-Aplikasi akan berjalan di:
+App akan tersedia di:
 ```text
 http://localhost:3000
 ```
 
-## Menyiapkan database Supabase
+## Setup Supabase
 
 Jalankan file berikut di **Supabase SQL Editor**:
 
 1. `supabase/schema.sql`
 2. `supabase/policies.sql`
 
-Urutannya harus:
+Urutan wajib:
 - schema dulu
 - policies setelahnya
 
-## Validasi project
+## Validation commands
 
 ### Lint
 ```bash
@@ -131,9 +143,16 @@ npm run build
 npx playwright test tests/smoke.spec.ts --reporter=line
 ```
 
-## Status project saat ini
+## Security notes
 
-StudyFlow saat ini sudah berfungsi sebagai MVP yang bisa diuji end-to-end untuk:
+- Password tidak disimpan manual di aplikasi; autentikasi ditangani oleh Supabase Auth.
+- Akses data dibatasi dengan **Row Level Security (RLS)**.
+- `.env.local` dan file env lain tidak boleh di-commit.
+- Jangan pernah memasukkan secret key atau service role key ke repository.
+
+## Current status
+
+StudyFlow saat ini sudah berfungsi sebagai MVP end-to-end untuk:
 - auth
 - CRUD mata kuliah
 - CRUD tugas
@@ -143,26 +162,18 @@ StudyFlow saat ini sudah berfungsi sebagai MVP yang bisa diuji end-to-end untuk:
 - mobile navigation
 - landing page mobile-friendly
 
-## Catatan keamanan
+## Known next improvements
 
-- Password **tidak disimpan manual** di aplikasi, tetapi ditangani oleh Supabase Auth.
-- Data di database dibatasi dengan **Row Level Security (RLS)**.
-- `.env.local` harus tetap berada di `.gitignore`.
-- Jangan commit secret key atau service role key ke repository.
-
-## Roadmap pengembangan berikutnya
-
-Beberapa peningkatan yang masih bisa dikembangkan:
 - statistik belajar yang lebih detail
-- reminder/notifikasi
+- reminder / notification system
 - improved calendar UX
-- portfolio polish tambahan
-- deployment domain production final
+- production deployment final
+- screenshot assets untuk README portfolio
 
-## Tujuan project
+## Purpose
 
 Project ini dibuat untuk:
-- portfolio development
-- showcase fullstack MVP
-- dasar pengembangan SaaS untuk mahasiswa
-- bahan presentasi/GitHub/LinkedIn
+- portfolio fullstack project
+- showcase MVP SaaS berbasis Next.js + Supabase
+- dasar pengembangan produk untuk mahasiswa Indonesia
+- bahan presentasi GitHub / LinkedIn / portfolio pribadi
