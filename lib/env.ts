@@ -4,3 +4,7 @@ export function isSupabaseConfigured() {
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   );
 }
+
+export function getSiteUrl() {
+  return process.env.NEXT_PUBLIC_SITE_URL || "https://studyflow-id.duckdns.org";
+}

@@ -4,7 +4,7 @@ StudyFlow adalah **academic planner sederhana untuk mahasiswa Indonesia** yang d
 
 ## Live demo
 
-- **Public test URL:** http://213.163.196.241
+- **Public test URL:** https://studyflow-id.duckdns.org
 
 ## Preview
 

@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { isSupabaseConfigured } from "@/lib/env";
+import { getSiteUrl } from "@/lib/env";
 import { createServerClient } from "@/lib/supabase/server";
 import { loginSchema, registerSchema } from "@/lib/validators/auth";
 
@@ -53,6 +54,7 @@ export async function registerAction(formData: FormData) {
     email: parsed.data.email,
     password: parsed.data.password,
     options: {
+      emailRedirectTo: `${getSiteUrl()}/login`,
       data: {
         full_name: parsed.data.fullName,
       },
