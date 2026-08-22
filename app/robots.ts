@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "http://213.163.196.241/sitemap.xml",
+    sitemap: "https://studyflow-id.duckdns.org/sitemap.xml",
   };
 }

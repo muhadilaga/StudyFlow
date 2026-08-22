@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const siteUrl = "http://213.163.196.241";
+const siteUrl = "https://studyflow-id.duckdns.org";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

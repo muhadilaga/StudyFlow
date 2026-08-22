@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl = "http://213.163.196.241";
+const baseUrl = "https://studyflow-id.duckdns.org";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
