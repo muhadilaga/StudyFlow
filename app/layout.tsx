@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+const siteUrl = "http://213.163.196.241";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -13,8 +15,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "StudyFlow",
-  description: "Planner akademik sederhana untuk mahasiswa.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "StudyFlow",
+    template: "%s | StudyFlow",
+  },
+  description:
+    "Planner akademik sederhana untuk mahasiswa Indonesia untuk mengatur kuliah, tugas, deadline, dan goal belajar dari satu dashboard.",
+  keywords: ["StudyFlow", "planner mahasiswa", "academic planner", "Next.js", "Supabase"],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "StudyFlow",
+    description: "Planner akademik sederhana untuk mahasiswa Indonesia.",
+    url: siteUrl,
+    siteName: "StudyFlow",
+    locale: "id_ID",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "StudyFlow",
+    description: "Planner akademik sederhana untuk mahasiswa Indonesia.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
